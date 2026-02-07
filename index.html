@@ -13,25 +13,7 @@
     rel="stylesheet">
 
   <style>
-    @media (max-width: 480px) {
-      .name {
-        font-size: 42px;
-        /* увеличиваем минимальный размер на маленьких экранах */
-      }
-
-      .love {
-        font-size: 50px;
-      }
-
-      .location-title {
-        font-size: 64px;
-      }
-
-      .program-right {
-        font-size: 40px;
-      }
-    }
-
+    /* ================= GLOBAL ================= */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -56,14 +38,12 @@
           rgba(246, 244, 239, 0.85) 88%,
           #f6f4ef 100%),
         url("front.png");
-      /* ================= поменять первую фото ================= */
       background-size: cover;
       background-position: center;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #f6f4ef;
-
     }
 
     .cover-inner {
@@ -79,7 +59,6 @@
       position: relative;
     }
 
-    /* Имена */
     .names-top {
       display: flex;
       justify-content: center;
@@ -111,7 +90,6 @@
       transition: opacity 1.2s ease;
     }
 
-    /* Дата и подпись */
     .cover-bottom .date-block {
       display: flex;
       flex-direction: column;
@@ -131,7 +109,6 @@
       font-size: 20px;
     }
 
-    /* Класс visible для cover */
     .cover-visible.name-left {
       transform: translateX(0);
       opacity: 1;
@@ -167,24 +144,19 @@
       color: #7a745f;
     }
 
-    /* Анимация печатающегося текста */
     .typing {
       display: inline-block;
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid #7a745f;
-      /* курсор */
       font-family: "Montserrat", sans-serif;
       font-size: clamp(28px, 6vw, 36px);
-      box-sizing: content-box;
     }
 
-    /* Курсор исчезает после завершения печати */
     .typing.cursor-hide {
       border-right: none;
     }
 
-    /* Блок текста под заголовком */
     .text-block p {
       opacity: 0;
       font-family: "Mulish", sans-serif;
@@ -195,19 +167,6 @@
     .text-block.visible p {
       opacity: 1;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     .section-divider {
       width: 100%;
@@ -231,166 +190,98 @@
       transform: translate(-50%, -50%);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* ================= CALENDAR ================= */
-/* ================= CALENDAR ================= */
-/* ================= CALENDAR — Мобильный адаптив ================= */
-@media (max-width: 768px) {
-  .calendar {
-    max-width: 100%; /* календарь на всю ширину экрана */
-  }
+    .calendar-section {
+      padding: 60px 20px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      text-align: center;
+      color: #2a2a2a;
+    }
 
-  .month {
-    font-size: 42px; /* крупнее месяц */
-    margin-bottom: 20px;
-  }
+    .calendar {
+      max-width: 460px;
+      margin: 0 auto;
+      font-family: 'Inter', sans-serif;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-  .weekdays span {
-    font-size: 18px; /* крупнее дни недели */
-    margin-bottom: 12px;
-  }
+    .calendar.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-  .days span {
-    font-size: 22px; /* крупнее числа */
-    padding: 20px 0; /* больше "кнопки" для касания */
-  }
+    .month {
+      font-family: "Montserrat", sans-serif;
+      font-size: 36px;
+      margin-bottom: 28px;
+      color: #7a745f;
+    }
 
-  .wedding-day {
-    width: 50px;  /* увеличиваем круг для дня свадьбы */
-    height: 50px;
-    font-size: 22px;
-  }
+    .weekdays,
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
 
-  .calendar-year {
-    font-size: 28px; /* год крупнее */
-    margin-top: 20px;
-  }
-}
+    .weekdays span {
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #7a745f;
+      margin-bottom: 10px;
+    }
 
-.calendar-section {
-  padding: 60px 20px;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  text-align: center;
-  color: #2a2a2a;
-}
+    .days span {
+      padding: 16px 0;
+      font-size: 18px;
+    }
 
-/* Календарь */
-.calendar {
-  max-width: 460px;
-  margin: 0 auto;
-  font-family: 'Inter', sans-serif;
+    .wedding-day {
+      border: 2px solid #7a745f;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      color: #7a745f;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
 
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
-}
+    .calendar-year {
+      margin-top: 30px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: #7a745f;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-.calendar.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .calendar-year.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* Месяц */
-.month {
-  font-family: "Montserrat", sans-serif;
-  font-size: 36px;
-  margin-bottom: 28px;
-  color: #7a745f;
-}
+    .animate-calendar,
+    .animate-year {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-/* Дни недели */
-.weekdays,
-.days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
-
-.weekdays span {
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #7a745f;
-  margin-bottom: 10px;
-}
-
-/* Числа */
-.days span {
-  padding: 16px 0;
-  font-size: 18px;
-}
-
-/* День свадьбы */
-.wedding-day {
-  border: 2px solid #7a745f;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
-  color: #7a745f;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-/* Год */
-.calendar-year {
-  margin-top: 30px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  letter-spacing: 4px;
-  color: #7a745f;
-
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.calendar-year.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Анимация при появлении (можно подключить через JS IntersectionObserver) */
-.animate-calendar,
-.animate-year {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.animate-calendar.visible,
-.animate-year.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-
-
-
-
-
+    .animate-calendar.visible,
+    .animate-year.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ================= LOCATION ================= */
-
     .location-section {
       background: #971848;
       padding: 140px 20px;
@@ -404,7 +295,6 @@
       text-align: center;
     }
 
-    /* Заголовок LOCATION */
     .location-title {
       font-family: "Montserrat", sans-serif;
       font-size: clamp(48px, 14vw, 110px);
@@ -415,7 +305,6 @@
       user-select: none;
     }
 
-    /* Контент */
     .location-info {
       opacity: 0;
       transform: translateY(50px);
@@ -427,7 +316,6 @@
       transform: translateY(0);
     }
 
-    /* Тексты */
     .place {
       font-family: "Montserrat", sans-serif;
       font-size: 36px;
@@ -448,7 +336,6 @@
       margin-bottom: 50px;
     }
 
-    /* Кнопка */
     .map-btn {
       display: inline-block;
       padding: 14px 46px;
@@ -471,25 +358,7 @@
       transform: scale(0.96);
     }
 
-    /* Адаптив */
-    @media (max-width: 768px) {
-      .location-title {
-        font-size: 64px;
-        margin-bottom: 50px;
-      }
-
-      .place {
-        font-size: 28px;
-      }
-    }
-
-
-
-
-
-    /* ===== PROGRAM простой фон ===== */
-
-
+    /* ================= PROGRAM ================= */
     .program-minimal {
       padding: 80px 20px;
       margin-top: 80px;
@@ -505,39 +374,28 @@
       align-items: flex-start;
     }
 
-    /* Заголовок PROGRAM теперь слева */
     .program-right {
       order: 0;
-      /* слева */
       font-size: clamp(32px, 8vw, 60px);
       letter-spacing: 6px;
       font-family: "Montserrat", sans-serif;
       opacity: 0;
       transform: translateX(-40px);
-      /* оставляем анимацию появления слева */
       transition: 1s ease;
-
       margin-top: 100px;
-      /* вот это смещает текст вниз */
     }
-
 
     .program-right.visible {
       opacity: 1;
       transform: translateX(0) translateY(0);
-      /* появляется на правильной позиции */
     }
 
-
-    /* Текст событий теперь справа */
     .program-left {
       order: 1;
-      /* справа */
       max-width: 400px;
       font-family: "Mulish", sans-serif;
       opacity: 0;
       transform: translateX(40px);
-      /* появление справа */
       transition: 1s ease;
     }
 
@@ -560,55 +418,20 @@
       line-height: 1.4;
     }
 
-    /* Адаптив */
-    @media (max-width: 900px) {
-      .program-wrap {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .program-right {
-        order: -1;
-        /* заголовок сверху */
-        margin-bottom: 60px;
-        font-size: 40px;
-        transform: translateX(0);
-        /* отключаем смещение */
-      }
-
-      .program-left {
-        order: 0;
-        max-width: 100%;
-        transform: translateX(0);
-        /* отключаем смещение */
-      }
-    }
-
-
-
-
-
-
-
-    /* ===== DRESS-CODE SECTION ===== */
-
-
+    /* ================= DRESS-CODE ================= */
     .dress-code-section {
       padding: 60px 20px;
       margin-top: 60px;
       margin-bottom: 80px;
       background: #f6f4ef;
-      /* светлый фон */
       text-align: center;
       font-family: "Montserrat", sans-serif;
       color: #7a745f;
-      /* тёмный минималистичный текст */
       overflow: hidden;
     }
 
     .dress-code-title {
       font-size: 46px;
-      /* уменьшили заголовок */
       margin-bottom: 20px;
       opacity: 0;
       transform: translateY(-25px);
@@ -618,23 +441,16 @@
     .dress-code-text {
       font-family: "Mulish", sans-serif;
       font-size: 14px;
-      /* маленький размер текста */
       line-height: 1.8;
-      /* увеличенный межстрочный интервал */
       letter-spacing: 1.2px;
-      /* растягиваем буквы */
       max-width: 600px;
-      /* ширина блока */
       margin: 0 auto 40px;
       opacity: 0;
       transform: translateY(30px);
       transition: 1s ease;
       text-align: center;
-      /* текст по центру */
     }
 
-
-    /* Цвета свадьбы в кружочках */
     .wedding-colors {
       display: flex;
       justify-content: center;
@@ -650,7 +466,6 @@
       transition: transform 0.8s ease, opacity 0.8s ease;
     }
 
-    /* Появление элементов при скролле */
     .dress-code-visible .dress-code-title {
       opacity: 1;
       transform: translateY(0);
@@ -679,29 +494,7 @@
       transition-delay: 0.9s;
     }
 
-    /* Адаптив */
-    @media (max-width: 768px) {
-      .dress-code-title {
-        font-size: 40px;
-      }
-
-      .dress-code-text {
-        font-size: 16px;
-      }
-
-      .color-circle {
-        width: 50px;
-        height: 50px;
-      }
-    }
-
-
-
-
-
-
-
-
+    /* ================= COUNTDOWN ================= */
     .countdown-section {
       padding: 120px 20px;
       background: url('1.png') center/cover no-repeat;
@@ -755,37 +548,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* Адаптив */
-    @media (max-width: 768px) {
-      .countdown-title {
-        font-size: 28px;
-        margin-bottom: 30px;
-      }
-
-      .time-number,
-      .time-separator {
-        font-size: 36px;
-      }
-
-      .time-label {
-        font-size: 14px;
-      }
-
-      .countdown-text {
-        font-size: 14px;
-      }
-    }
-
-
-
-
-
-
-
-
-
-
-
+    /* ================= DETAILS ================= */
     .details-section {
       padding: 60px 20px;
       margin-top: 60px;
@@ -827,7 +590,6 @@
       margin-bottom: 12px;
     }
 
-    /* Классы для анимации появления */
     .details-section.visible .details-title,
     .detail-item.visible {
       opacity: 1;
@@ -839,54 +601,7 @@
       transform: translateY(0);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ================= RSVP — Мобильный адаптив ================= */
-@media (max-width: 768px) {
-  .rsvp-inner {
-    padding: 30px 20px; /* чуть больше для удобства */
-  }
-
-  .rsvp-title {
-    font-size: 28px; /* заголовок крупнее */
-  }
-
-  .rsvp-subtitle {
-    font-size: 16px; /* подзаголовок чуть больше */
-  }
-
-  .rsvp-form label {
-    font-size: 16px; /* метки к полям увеличены */
-  }
-
-  .rsvp-form input[type="text"] {
-    font-size: 16px; /* текст внутри полей больше */
-    padding: 14px 16px; /* больше отступы */
-  }
-
-  .rsvp-form .options label {
-    font-size: 16px; /* текст радио и чекбоксов увеличен */
-  }
-
-  .rsvp-btn {
-    font-size: 18px; /* кнопка крупнее */
-    padding: 14px 20px; 
-  }
-}
-
-
+    /* ================= RSVP ================= */
     .rsvp-section {
       padding: 80px 20px;
       background: #f6f4ef;
@@ -971,13 +686,130 @@
       background: #6b6a53;
     }
 
-    @media (max-width: 768px) {
-      .rsvp-inner {
-        padding: 30px 20px;
+    /* ================= MEDIA QUERIES ================= */
+    @media (max-width: 900px) {
+      .program-wrap {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .rsvp-title {
+      .program-right {
+        order: -1;
+        margin-bottom: 60px;
+        font-size: 40px;
+        transform: translateX(0);
+      }
+
+      .program-left {
+        order: 0;
+        max-width: 100%;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .calendar {
+        max-width: 100%;
+      }
+
+      .month {
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+
+      .weekdays span {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      .days span {
+        font-size: 22px;
+        padding: 20px 0;
+      }
+
+      .wedding-day {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+      }
+
+      .calendar-year {
         font-size: 28px;
+        margin-top: 20px;
+      }
+
+      .location-title {
+        font-size: 64px;
+        margin-bottom: 50px;
+      }
+
+      .place {
+        font-size: 28px;
+      }
+
+      .dress-code-title {
+        font-size: 40px;
+      }
+
+      .dress-code-text {
+        font-size: 16px;
+      }
+
+      .color-circle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .countdown-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
+      .time-number,
+      .time-separator {
+        font-size: 36px;
+      }
+
+      .time-label {
+        font-size: 16px;
+      }
+
+      .details-title {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cover-inner {
+        padding: clamp(50px, 15vh, 80px) 16px;
+      }
+
+      .names-top {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .amp {
+        font-size: 36px;
+      }
+
+      .cover-bottom .date-block {
+        margin-left: 0;
+        align-items: center;
+      }
+
+      .program-right {
+        font-size: 32px;
+        margin-top: 60px;
+      }
+
+      .countdown-timer {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .rsvp-inner {
+        padding: 20px;
       }
     }
   </style>
@@ -1017,45 +849,45 @@
   <!-- CALENDAR и форма остаются как есть -->
 
 
-<section class="calendar-section">
+  <section class="calendar-section">
 
-  <!-- Календарь -->
-  <div class="calendar animate-calendar">
+    <!-- Календарь -->
+    <div class="calendar animate-calendar">
 
-    <!-- Месяц -->
-    <div class="month">Липень</div>
+      <!-- Месяц -->
+      <div class="month">Липень</div>
 
-    <!-- Дни недели -->
-    <div class="weekdays">
-      <span>Пн</span>
-      <span>Вт</span>
-      <span>Ср</span>
-      <span>Чт</span>
-      <span>Пт</span>
-      <span>Сб</span>
-      <span>Нд</span>
+      <!-- Дни недели -->
+      <div class="weekdays">
+        <span>Пн</span>
+        <span>Вт</span>
+        <span>Ср</span>
+        <span>Чт</span>
+        <span>Пт</span>
+        <span>Сб</span>
+        <span>Нд</span>
+      </div>
+
+      <!-- Числа -->
+      <div class="days">
+        <!-- Пустых дней до 1-го числа нет, так как 1 июля — понедельник -->
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+        <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+        <span class="wedding-day">26</span>
+        <span>27</span><span>28</span><span>29</span><span>30</span>
+      </div>
+
     </div>
 
-    <!-- Числа -->
-    <div class="days">
-      <!-- Пустых дней до 1-го числа нет, так как 1 июля — понедельник -->
-      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-      <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-      <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
-      <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-      <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
-      <span class="wedding-day">26</span>
-      <span>27</span><span>28</span><span>29</span><span>30</span>
+    <!-- Год отдельно -->
+    <div class="calendar-year animate-year">
+      2026
     </div>
 
-  </div>
-
-  <!-- Год отдельно -->
-  <div class="calendar-year animate-year">
-    2026
-  </div>
-
-</section>
+  </section>
 
 
 
@@ -1321,45 +1153,45 @@
 
 
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const weddingDate = new Date(2026, 5, 26, 18, 0, 0); // 26 июня 2026, 17:00
+    document.addEventListener("DOMContentLoaded", () => {
+      const weddingDate = new Date(2026, 5, 26, 18, 0, 0); // 26 июня 2026, 17:00
 
-  const daysEl = document.getElementById("days-timer");
-  const hoursEl = document.getElementById("hours-timer");
-  const minutesEl = document.getElementById("minutes-timer");
-  const secondsEl = document.getElementById("seconds-timer");
+      const daysEl = document.getElementById("days-timer");
+      const hoursEl = document.getElementById("hours-timer");
+      const minutesEl = document.getElementById("minutes-timer");
+      const secondsEl = document.getElementById("seconds-timer");
 
-  function pad(num) {
-    return num.toString().padStart(2, "0");
-  }
+      function pad(num) {
+        return num.toString().padStart(2, "0");
+      }
 
-  function updateCountdown() {
-    const now = new Date();
-    const diff = weddingDate.getTime() - now.getTime();
+      function updateCountdown() {
+        const now = new Date();
+        const diff = weddingDate.getTime() - now.getTime();
 
-    if (diff <= 0) {
-      // Если дата уже прошла
-      daysEl.innerText = "00";
-      hoursEl.innerText = "00";
-      minutesEl.innerText = "00";
-      secondsEl.innerText = "00";
-      return;
-    }
+        if (diff <= 0) {
+          // Если дата уже прошла
+          daysEl.innerText = "00";
+          hoursEl.innerText = "00";
+          minutesEl.innerText = "00";
+          secondsEl.innerText = "00";
+          return;
+        }
 
-    const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / (24 * 3600));
-    const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / (24 * 3600));
+        const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
 
-    daysEl.innerText = pad(days);
-    hoursEl.innerText = pad(hours);
-    minutesEl.innerText = pad(minutes);
-    secondsEl.innerText = pad(seconds);
-  }
+        daysEl.innerText = pad(days);
+        hoursEl.innerText = pad(hours);
+        minutesEl.innerText = pad(minutes);
+        secondsEl.innerText = pad(seconds);
+      }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
 
 
